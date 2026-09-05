@@ -2,25 +2,53 @@
 
 ### 🧠 Multi-Agent AI Platform powered by MERN, LangGraph, RAG & Microservices
 
-**Arpit-AgentVerse** is a full-stack multi-agent AI platform designed to bring multiple specialized AI capabilities together into one intelligent workspace.
+**Arpit-AgentVerse** is a full-stack multi-agent AI platform that brings multiple specialized AI capabilities together into one intelligent workspace.
 
-Built with **React, Node.js, Express, MongoDB, Redis, LangChain, LangGraph, RAG and microservices**, the platform intelligently routes user requests to specialized AI agents for conversations, coding, document analysis, web search, vision, presentations and more.
+Built with **React, Node.js, Express, MongoDB, Redis, LangChain, LangGraph, RAG and Microservices**, the platform intelligently routes user requests to specialized AI agents for conversations, coding, document analysis, web search, vision, presentations and more.
 
 > **One platform. Multiple AI agents. One intelligent workflow.**
 
 ---
 
-## ✨ Features
+## 🌐 Live Demo
 
-### 🤖 Multi-Agent AI
+### 🚀 Production Application
+
+**Frontend:**
+https://agentverse-frontend.vercel.app
+
+**GitHub Repository:**
+https://github.com/arpitsri9662-collab/Arpit-AgentVerse
+
+### ☁️ Production Backend Services
+
+| Service            | Platform      | Status       |
+| ------------------ | ------------- | ------------ |
+| 🎨 Frontend        | Vercel        | 🟢 Live      |
+| 🚪 API Gateway     | Render        | 🟢 Live      |
+| 🔐 Auth Service    | Render        | 🟢 Live      |
+| 💬 Chat Service    | Render        | 🟢 Live      |
+| 🤖 Agent Service   | Render        | 🟢 Live      |
+| 💳 Billing Service | Render        | 🟢 Live      |
+| 🍃 MongoDB         | MongoDB Atlas | 🟢 Connected |
+| ⚡ Redis            | Upstash Redis | 🟢 Connected |
+| 🔥 Authentication  | Firebase      | 🟢 Active    |
+
+---
+
+# ✨ Features
+
+## 🤖 Multi-Agent AI
 
 * Specialized AI agents for different tasks
 * Intelligent request routing
-* LangGraph-based agent orchestration
+* LangGraph-based orchestration
 * Context-aware conversations
-* Modular and extensible agent architecture
+* Modular agent architecture
+* Multiple LLM providers
+* Agent-specific credit consumption
 
-### 💬 AI Chat
+## 💬 AI Chat
 
 * ChatGPT-inspired interface
 * Persistent conversations
@@ -28,60 +56,70 @@ Built with **React, Node.js, Express, MongoDB, Redis, LangChain, LangGraph, RAG 
 * Markdown rendering
 * AI-generated responses
 * Animated AI thinking state
+* Backend conversation persistence
 
-### 👨‍💻 Coding Agent
+## 👨‍💻 Coding Agent
 
 * Programming assistance
 * Code generation
 * Code explanation
 * Debugging assistance
+* Developer-focused AI workflows
 * Monaco Editor integration
 
-### 📄 PDF & RAG
+## 📄 PDF & RAG
 
-* Upload and analyze PDF documents
+* PDF document upload
+* Document analysis
 * Document-based question answering
+* Text extraction
+* Document chunking
 * Embedding generation
 * Semantic vector search
 * Context-aware responses
 
-### 🔎 AI Search
+## 🔎 AI Search
 
 * Web search integration
 * Real-time information retrieval
 * Search-powered AI responses
 * Research-oriented workflows
+* AI-assisted web research
 
-### 👁️ Vision Agent
+## 👁️ Vision Agent
 
 * Image understanding
 * Visual question answering
 * Image analysis
 * AI-powered visual interpretation
 
-### 📊 PPT Agent
+## 📊 PPT Agent
 
 * AI-powered presentation generation
 * Structured slide creation
-* Automated content generation
+* Automated presentation content
+* AI-assisted slide workflows
 
-### 💳 Credits & Billing
+## 💳 Credits & Billing
 
 * Usage-based credit system
 * Free credits for users
-* Subscription plans
+* Agent-specific credit costs
+* Automatic credit deduction
+* Subscription architecture
 * Razorpay integration
-* Credit deduction based on agent usage
 
-### 🔐 Authentication
+## 🔐 Authentication
 
 * Firebase Authentication
 * Google Sign-In
-* Session-based authorization
-* Protected API routes
+* Firebase ID token verification
+* HTTP-only session cookies
 * Redis-backed sessions
+* Protected API routes
+* Production cross-origin authentication
 
-### ⚡ Microservices
+## ⚡ Microservices
 
 The backend is divided into independent services:
 
@@ -91,69 +129,147 @@ The backend is divided into independent services:
 * Agent Service
 * Billing Service
 
-This makes the application modular, scalable and easier to maintain.
+Each service can be developed, deployed and scaled independently.
 
 ---
 
 # 🏗️ System Architecture
 
 ```text
-                         ┌──────────────────┐
-                         │   React + Vite   │
-                         │    Frontend      │
-                         └────────┬─────────┘
-                                  │
-                                  ▼
-                         ┌──────────────────┐
-                         │   API Gateway    │
-                         │    Port 5000     │
-                         └────────┬─────────┘
-                                  │
-             ┌────────────────────┼────────────────────┐
-             │                    │                    │
-             ▼                    ▼                    ▼
-      ┌─────────────┐      ┌─────────────┐      ┌─────────────┐
-      │    Auth     │      │    Chat     │      │   Billing   │
-      │   Service   │      │   Service   │      │   Service   │
-      │   :5001     │      │   :5002     │      │   :5004     │
-      └──────┬──────┘      └──────┬──────┘      └─────────────┘
-             │                    │
-             └────────────┬───────┘
-                          │
-                          ▼
-                  ┌───────────────┐
-                  │ Agent Service │
-                  │     :5003     │
-                  └───────┬───────┘
-                          │
-                          ▼
-                 ┌──────────────────┐
-                 │ LangGraph        │
-                 │ Supervisor       │
-                 └────────┬─────────┘
-                          │
-          ┌───────────────┼────────────────┐
-          │               │                │
-          ▼               ▼                ▼
-      Chat Agent     Coding Agent      Search Agent
-          │               │                │
-          ├───────────────┼────────────────┤
-          │               │                │
-          ▼               ▼                ▼
-      PDF/RAG        Vision Agent       PPT Agent
-                          │
-                          ▼
-                  Vector Database
-                          │
-                          ▼
-                    Embeddings
+                         ┌──────────────────────┐
+                         │    React + Vite      │
+                         │      Frontend        │
+                         │       Vercel         │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │     API Gateway      │
+                         │       Render         │
+                         └──────────┬───────────┘
+                                    │
+              ┌─────────────────────┼─────────────────────┐
+              │                     │                     │
+              ▼                     ▼                     ▼
+       ┌─────────────┐       ┌─────────────┐       ┌─────────────┐
+       │    Auth     │       │    Chat     │       │   Billing   │
+       │   Service   │       │   Service   │       │   Service   │
+       │   Render    │       │   Render    │       │   Render    │
+       └──────┬──────┘       └──────┬──────┘       └─────────────┘
+              │                     │
+              │                     │
+              └──────────────┬──────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │  Agent Service   │
+                    │      Render      │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │    LangGraph     │
+                    │    Supervisor    │
+                    └────────┬─────────┘
+                             │
+              ┌──────────────┼──────────────┐
+              │              │              │
+              ▼              ▼              ▼
+        Chat Agent     Coding Agent    Search Agent
+              │              │              │
+              └──────────────┼──────────────┘
+                             │
+              ┌──────────────┼──────────────┐
+              │              │              │
+              ▼              ▼              ▼
+          PDF/RAG        Vision Agent     PPT Agent
+              │
+              ▼
+        Vector Database
+              │
+              ▼
+          Embeddings
 ```
+
+---
+
+# ☁️ Production Architecture
+
+Arpit-AgentVerse is deployed using a distributed cloud architecture.
+
+```text
+                       USER
+                         │
+                         ▼
+              ┌────────────────────┐
+              │   Vercel Frontend  │
+              │   React + Vite     │
+              └─────────┬──────────┘
+                        │
+                        ▼
+              ┌────────────────────┐
+              │   Render Gateway   │
+              └─────────┬──────────┘
+                        │
+          ┌─────────────┼─────────────┐
+          │             │             │
+          ▼             ▼             ▼
+       AUTH           CHAT         BILLING
+       Render         Render        Render
+          │             │
+          └──────┬──────┘
+                 │
+                 ▼
+             AGENT
+             Render
+                 │
+                 ▼
+           LangGraph
+           Supervisor
+                 │
+       ┌─────────┼─────────┐
+       ▼         ▼         ▼
+     Chat      Coding    Search
+       │         │         │
+       └─────────┼─────────┘
+                 │
+        ┌────────┼────────┐
+        ▼        ▼        ▼
+       PDF     Vision     PPT
+        │
+        ▼
+    Vector Search
+        │
+        ▼
+       LLM
+        │
+        ▼
+    AI Response
+        │
+        ▼
+      User
+```
+
+### Production Infrastructure
+
+| Component        | Technology    |
+| ---------------- | ------------- |
+| Frontend Hosting | Vercel        |
+| Backend Hosting  | Render        |
+| Database         | MongoDB Atlas |
+| Session Store    | Upstash Redis |
+| Authentication   | Firebase      |
+| AI Orchestration | LangGraph     |
+| LLM Framework    | LangChain     |
+| Search           | Tavily        |
+| Payments         | Razorpay      |
+| Containerization | Docker        |
 
 ---
 
 # 🧠 AI Agent Architecture
 
-Arpit-AgentVerse uses specialized agents rather than relying on a single AI workflow.
+Arpit-AgentVerse uses specialized agents instead of relying on a single AI workflow.
 
 | Agent              | Responsibility                   |
 | ------------------ | -------------------------------- |
@@ -174,7 +290,16 @@ Arpit-AgentVerse uses specialized agents rather than relying on a single AI work
                          User Query
                               │
                               ▼
-                       API Gateway
+                       React Frontend
+                              │
+                              ▼
+                         API Gateway
+                              │
+                              ▼
+                       Authentication
+                              │
+                              ▼
+                       Credit Validation
                               │
                               ▼
                        Agent Service
@@ -182,29 +307,36 @@ Arpit-AgentVerse uses specialized agents rather than relying on a single AI work
                               ▼
                      LangGraph Router
                               │
-             ┌────────────────┼────────────────┐
-             │                │                │
-             ▼                ▼                ▼
-          Chat            Coding            Search
-          Agent            Agent             Agent
-             │                │                │
-             └────────────────┼────────────────┘
+          ┌───────────────────┼───────────────────┐
+          │                   │                   │
+          ▼                   ▼                   ▼
+       Chat Agent         Coding Agent       Search Agent
+          │                   │                   │
+          └───────────────────┼───────────────────┘
                               │
-             ┌────────────────┼────────────────┐
-             │                │                │
-             ▼                ▼                ▼
-           PDF             Vision             PPT
-           Agent            Agent            Agent
+          ┌───────────────────┼───────────────────┐
+          │                   │                   │
+          ▼                   ▼                   ▼
+       PDF Agent          Vision Agent        PPT Agent
+                              │
+                              ▼
+                        LLM / RAG / Search
                               │
                               ▼
                          AI Response
+                              │
+                              ▼
+                         Chat Service
+                              │
+                              ▼
+                         User Interface
 ```
 
 ---
 
 # 🧠 RAG Pipeline
 
-Arpit-AgentVerse includes Retrieval-Augmented Generation for document-based AI workflows.
+Arpit-AgentVerse supports Retrieval-Augmented Generation for document-based AI workflows.
 
 ```text
 PDF Document
@@ -269,6 +401,61 @@ Redis Session
 Protected Microservice
 ```
 
+Production authentication uses:
+
+* Firebase Authentication
+* Google OAuth
+* HTTP-only cookies
+* Secure cookies in production
+* Redis-backed sessions
+* Protected Gateway routes
+
+---
+
+# 💳 Credit System
+
+Arpit-AgentVerse uses a usage-based credit system.
+
+| Agent        | Credit Cost |
+| ------------ | ----------: |
+| 💬 Chat      |           1 |
+| 🔎 Search    |           5 |
+| 👨‍💻 Coding |          10 |
+| 📄 PDF       |          10 |
+| 📊 PPT       |          10 |
+| 👁️ Vision   |          10 |
+
+### Credit Flow
+
+```text
+User Request
+     │
+     ▼
+API Gateway
+     │
+     ▼
+Agent Service
+     │
+     ▼
+Auth Service
+     │
+     ▼
+Check User Credits
+     │
+     ├── Insufficient ──► Reject Request
+     │
+     ▼
+Deduct Credits
+     │
+     ▼
+Execute AI Agent
+     │
+     ▼
+Generate Response
+```
+
+Credits are deducted **before AI execution** according to the selected agent.
+
 ---
 
 # 🛠️ Tech Stack
@@ -294,6 +481,7 @@ Protected Microservice
 * API Gateway
 * Microservices Architecture
 * Middleware-based authentication
+* Axios-based service communication
 
 ## 🤖 AI & LLM
 
@@ -304,20 +492,34 @@ Protected Microservice
 * Groq
 * OpenRouter
 * Vector Embeddings
+* Tavily Search
 
 ## 🗄️ Database & Storage
 
 * MongoDB
+* MongoDB Atlas
 * Mongoose
 * Redis
+* Upstash Redis
 * Vector Database
 
-## 🐳 DevOps
+## 🔥 Authentication
+
+* Firebase Authentication
+* Firebase Admin SDK
+* Google Sign-In
+* Redis Sessions
+* HTTP-only Cookies
+
+## 🐳 DevOps & Deployment
 
 * Docker
 * Docker Compose
 * Git
 * GitHub
+* Render
+* Vercel
+* Environment-based configuration
 
 ## 💳 Payments
 
@@ -403,6 +605,7 @@ Arpit-AgentVerse/
 
 ```bash
 git clone https://github.com/arpitsri9662-collab/Arpit-AgentVerse.git
+
 cd Arpit-AgentVerse
 ```
 
@@ -412,6 +615,7 @@ cd Arpit-AgentVerse
 
 ```bash
 cd frontend
+
 npm install
 ```
 
@@ -431,14 +635,15 @@ http://localhost:5173
 
 # ⚙️ Backend Setup
 
-Open another terminal:
+Open another terminal.
 
 ```bash
 cd backend
+
 npm install
 ```
 
-Install dependencies for each service if required:
+Install service dependencies:
 
 ```bash
 cd gateway
@@ -461,7 +666,7 @@ npm install
 
 # 🐳 Redis with Docker
 
-Arpit-AgentVerse uses Redis for session management and caching.
+For local development, Redis can be started using Docker Compose.
 
 From the backend directory:
 
@@ -469,17 +674,19 @@ From the backend directory:
 docker compose up -d redis
 ```
 
-Check the container:
+Check the running container:
 
 ```bash
 docker ps
 ```
 
-Redis runs on:
+Local Redis:
 
 ```text
 localhost:6379
 ```
+
+Production uses **Upstash Redis**.
 
 ---
 
@@ -500,7 +707,7 @@ localhost:6379
 
 # 🔧 Environment Variables
 
-Create separate `.env` files for the required services.
+Environment variables are configured separately for the frontend, gateway and backend services.
 
 ### Frontend
 
@@ -518,43 +725,68 @@ AUTH_SERVICE=http://localhost:5001
 CHAT_SERVICE=http://localhost:5002
 AGENT_SERVICE=http://localhost:5003
 BILLING_SERVICE=http://localhost:5004
+
+REDIS_URL=your_redis_url
 ```
 
 ### Auth
 
 ```env
 PORT=5001
-MONGODB_URI=mongodb://127.0.0.1:27017/agentverse_auth
+
+MONGODB_URI=your_mongodb_uri
+REDIS_URL=your_redis_url
+FIREBASE_SERVICE_ACCOUNT=your_firebase_service_account
 ```
 
-Additional environment variables may be required depending on the enabled AI agents, database, authentication, search, storage and payment integrations.
+Additional environment variables may be required by individual AI agents and integrations.
 
-> ⚠️ Never commit `.env` files, API keys, private keys or service-account credentials to GitHub.
+> ⚠️ **Never commit `.env` files, API keys, Firebase service-account credentials or private keys to GitHub.**
 
 ---
 
 # 🧪 Development
 
-Run the required services individually during development.
+During local development, the services can be run individually.
 
-Example:
+### Gateway
 
 ```bash
 cd backend/gateway
 npm start
 ```
 
-Then start the individual backend services:
+### Auth
 
 ```text
-Auth     → 5001
-Chat     → 5002
-Agent    → 5003
-Billing  → 5004
-Gateway  → 5000
+5001
 ```
 
-Start the frontend:
+### Chat
+
+```text
+5002
+```
+
+### Agent
+
+```text
+5003
+```
+
+### Billing
+
+```text
+5004
+```
+
+### Gateway
+
+```text
+5000
+```
+
+### Frontend
 
 ```bash
 cd frontend
@@ -565,7 +797,7 @@ npm run dev
 
 # 🔄 Request Flow
 
-A typical user request follows this architecture:
+A typical request follows this architecture:
 
 ```text
 React Frontend
@@ -577,13 +809,16 @@ API Gateway
 Authentication
       │
       ▼
+Credit Validation
+      │
+      ▼
 Agent Service
       │
       ▼
 LangGraph Router
       │
       ▼
-Specialized AI Agent
+Specialized Agent
       │
       ▼
 LLM / RAG / Search / Vision
@@ -592,25 +827,57 @@ LLM / RAG / Search / Vision
 AI Response
       │
       ▼
+Chat Service
+      │
+      ▼
 React Frontend
 ```
 
 ---
 
-# 📊 Credit System
+# ☁️ Deployment
 
-Arpit-AgentVerse uses a usage-based credit model.
+Arpit-AgentVerse is currently deployed using free-tier cloud infrastructure where possible.
 
-| Agent        | Credit Cost |
-| ------------ | ----------: |
-| 💬 Chat      |           1 |
-| 🔎 Search    |           5 |
-| 👨‍💻 Coding |          10 |
-| 📄 PDF       |          10 |
-| 📊 PPT       |          10 |
-| 👁️ Vision   |          10 |
+### Frontend
 
-Credits are validated and deducted through the backend before performing AI operations.
+**Vercel**
+
+```text
+https://agentverse-frontend.vercel.app
+```
+
+### Backend
+
+The backend microservices are deployed independently on **Render**:
+
+```text
+Gateway
+Auth
+Chat
+Agent
+Billing
+```
+
+### Database
+
+```text
+MongoDB Atlas
+```
+
+### Redis
+
+```text
+Upstash Redis
+```
+
+### Authentication
+
+```text
+Firebase Authentication
+```
+
+This architecture allows each backend service to be deployed and managed independently.
 
 ---
 
@@ -619,19 +886,25 @@ Credits are validated and deducted through the backend before performing AI oper
 The project implements several security mechanisms:
 
 * Firebase Authentication
+* Google Sign-In
+* Firebase ID token verification
 * Protected API Gateway routes
 * HTTP-only session cookies
+* Secure production cookies
 * Redis session storage
-* Environment-based configuration
 * CORS configuration
+* Environment-based configuration
 * `.gitignore` protection for secrets
 * Microservice-level API separation
+* Credit validation before AI execution
+
+> 🔒 Production secrets are stored in hosting-platform environment variables and are not committed to the repository.
 
 ---
 
 # 🎯 Project Goals
 
-Arpit-AgentVerse was built to explore and demonstrate modern AI application architecture combining:
+Arpit-AgentVerse was built to explore modern AI application architecture by combining:
 
 ```text
 MERN
@@ -651,27 +924,30 @@ Redis
 Firebase
  +
 Docker
+ +
+Cloud Deployment
 ```
 
-The goal is to build a platform that is not just an AI chatbot, but a **multi-agent AI ecosystem** capable of selecting the right agent for different types of tasks.
+The goal is to build a platform that is not just an AI chatbot, but a **multi-agent AI ecosystem** capable of selecting and executing the right AI workflow for different types of tasks.
 
 ---
 
 # 🚧 Future Improvements
 
-* [ ] Streaming AI responses
-* [ ] More specialized AI agents
-* [ ] Advanced agent memory
-* [ ] Improved RAG pipelines
-* [ ] Multiple vector database providers
-* [ ] Agent marketplace
-* [ ] Team/workspace support
-* [ ] Advanced analytics dashboard
-* [ ] Production deployment
-* [ ] Automated testing
-* [ ] CI/CD pipeline
-* [ ] Rate limiting
-* [ ] Observability and monitoring
+* Streaming AI responses
+* More specialized AI agents
+* Advanced agent memory
+* Improved RAG pipelines
+* Multiple vector database providers
+* Agent marketplace
+* Team/workspace support
+* Advanced analytics dashboard
+* Automated testing
+* CI/CD pipeline
+* Rate limiting
+* Observability and monitoring
+* Improved production scalability
+* Advanced billing and subscription management
 
 ---
 
@@ -698,6 +974,9 @@ Test
   │
   ▼
 Commit
+  │
+  ▼
+Push
   │
   ▼
 Pull Request
@@ -731,7 +1010,11 @@ Interested in:
 
 ### GitHub
 
-https://github.com/arpitsri9662-collab
+https://github.com/arpitsri9662
+
+### Project Repository
+
+https://github.com/arpitsri9662-collab/Arpit-AgentVerse
 
 ---
 
@@ -741,7 +1024,7 @@ If you find **Arpit-AgentVerse** interesting or useful, consider giving the repo
 
 ---
 
-## 🧠 Arpit-AgentVerse
+# 🧠 Arpit-AgentVerse
 
 > **Build agents. Connect intelligence. Create possibilities.**
 
