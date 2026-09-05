@@ -10,6 +10,10 @@ export const agent=async (req,res,next) => {
         const file=req.file
         console.log("file",file)
         const userId=req.headers["x-user-id"]
+        await axios.post(`${process.env.AUTH_SERVICE}/deduct-credits`,{
+                        userId,
+                       agent 
+        })
         await axios.post(`${process.env.CHAT_SERVICE}/save-message`,{
             conversationId,role:"user",content:prompt
         })
