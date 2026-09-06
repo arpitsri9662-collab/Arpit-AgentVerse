@@ -7,6 +7,11 @@ export const proxyWithHeader = (serviceUrl) => {
                 proxyReqOpts.headers["x-user-id"] = srcReq.user.userId
             }
             return proxyReqOpts
+        },
+        proxyErrorHandler: (err, res, next) => {
+            console.error("PROXY ERROR:", err.message)
+            console.error("TARGET SERVICE:", serviceUrl)
+            next(err)
         }
     })
 }
